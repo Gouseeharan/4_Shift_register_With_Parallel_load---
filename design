@@ -6,7 +6,7 @@ always @( posedge clk ) begin
   q <= parallel_in;
   else
   if ( shift_en )
-  q <= {[3:1]q,serial_in};
+  q <= {q[2:0],serial_in};
   else 
   q <= q;
   end
