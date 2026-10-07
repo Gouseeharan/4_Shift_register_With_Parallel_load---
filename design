@@ -1,0 +1,13 @@
+module regis ( input clk, reset, load, shift_en, serial_in, input [3:0] parallel_in , output reg [3:0]q);
+always @( posedge clk ) begin
+  if ( reset )
+  q <= 4'b0000;
+  else if ( load )
+  q <= parallel_in;
+  else
+  if ( shift_en )
+  q <= {[3:1]q,serial_in};
+  else 
+  q <= q;
+  end
+endmodule
